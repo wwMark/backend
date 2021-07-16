@@ -1,5 +1,5 @@
 # Backend of majong application by MMDCT
-This backend is implemented with [Django](https://www.djangoproject.com/). It mainly handles the http requests sent from client app and synchronizes data of all the client side devices.
+This backend is implemented with [Django](https://www.djangoproject.com/). It handles the http requests sent from client app and synchronizes data of all the client side devices.
 
 ## Environment
 This section will be added later.
