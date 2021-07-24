@@ -1,13 +1,35 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotAllowed
 from django.views.decorators.csrf import csrf_exempt
+from django.template import loader
 from majong_processor.models import *
 import json
 
+from django.shortcuts import redirect
+
+@csrf_exempt
+# handle request related to get index page content
+def handle_index(request):
+    if request.method == "GET":
+        index_template = loader.get_template('zhimajiang.html')
+        return HttpResponse(index_template.render())
+        # return redirect("http://stackoverflow.com/")
+    else:
+        return HttpResponseNotAllowed(['GET'])
 @csrf_exempt
 # handle request related to add name page
 def handle_name(request):
-    if request.method == "POST":
+    if request.method == "GET":
+        if Player.objects.all().exists():
+            first = Player.objects.filter(id=1)
+            second = Player.objects.filter(id=2)
+            third = Player.objects.filter(id=3)
+            fourth = Player.objects.filter(id=4)
+            return HttpResponse("Player names are " + first + ", " + second + ", " + third + ", " + fourth)
+        else:
+            return HttpResponse("OK")
+    elif request.method == "POST":
+        '''
         json_data = json.loads(request.body)
         first = Player(name_text=json_data['first'], id=1)
         second = Player(name_text=json_data['second'], id=2)
@@ -20,6 +42,18 @@ def handle_name(request):
         print('Showing database name table items:')
         print(Player.objects.all())
         return HttpResponse("Server has received players' names.")
+        '''
+        print(request.body)
+        player = json.loads(str(request.body, 'utf-8'))
+        # player = json.loads(request.body.decode('utf-8'))
+        # print(player['player'])
+        response = HttpResponse("Server got it!")
+        response["Access-Control-Allow-Origin"] = "*"
+        response["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+        response["Access-Control-Max-Age"] = "1000"
+        response["Access-Control-Allow-Headers"] = "X-Requested-With, Content-Type"
+        print(response)
+        return response
     elif request.method == "PUT":
         json_data = json.loads(request.body)
         first = json_data['first']
@@ -38,9 +72,6 @@ def handle_name(request):
         print('Showing database name table items, empty if items are deleted correctly:')
         print(Player.objects.all())
         return HttpResponse("Server has deleted all names.")
-    # code below is only for testing
-    elif request.method == "GET":
-        return HttpResponse("Handling NAME GET")
 
 @csrf_exempt
 # handle request related to add score page

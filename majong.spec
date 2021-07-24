@@ -1,15 +1,14 @@
 # -*- mode: python ; coding: utf-8 -*-
 
-
 block_cipher = None
 
 
 a = Analysis(['manage.py'],
              pathex=['C:\\Users\\Mark\\iCloudDrive\\zaizai\\majong'],
              binaries=[],
-             datas=[],
-             hiddenimports=[],
-             hookspath=[],
+             datas=[('C:\\Users\\Mark\\iCloudDrive\\zaizai\\majong\\majong_processor\\templates\\zhimajiang\\zhimajiang.html', './majong_processor/templates/zhimajiang/zhimajiang.html')],
+             hiddenimports=['majong_processor'],
+             hookspath=['hooks'],
              runtime_hooks=[],
              excludes=[],
              win_no_prefer_redirects=False,

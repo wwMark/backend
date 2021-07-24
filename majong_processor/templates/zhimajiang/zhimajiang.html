@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <link rel="stylesheet" href="/static/style.css" />
+      <title>芝麻酱</title>
+   </head>
+   <body>
+      <header>
+         <img src="/static/img/Logo.png" class="head-logo" alt="MMCD logo image for SesameButter" />
+         <h1>记麻将</h1>
+      </header>
+      <div id="dleft"　class="sidebar">
+            <div class="player" id="spring">
+               <img src="/static/img/spring.png" width=100px class="season-img" /><br>
+               <input type="player" id="p-spring" placeholder="spring" >
+               <h2 id="set1" class="score"></h2>
+               <div class="win-lose-container">
+                  <div>
+                    <h4>Win</h4>
+                    <p id="s1win" class="score plus">+0</p>
+                  </div>
+                  <div>
+                    <h4>Lose</h4>
+                    <p id="s1lose" class="score minus">-0</p>
+                  </div>
+               </div> 
+            </div>
+
+            <div class="player" id="summer">
+               <img src="/static/img/summer.png" width=100px class="season-img" /><br>
+               <input type="player" id="p-summer" placeholder="summer" >
+               <h2 id="set2" class="score"></h2>
+               <div class="win-lose-container">
+                  <div>
+                    <h4>Win</h4>
+                    <p id="s2win" class="score plus">+0</p>
+                  </div>
+                  <div>
+                    <h4>Lose</h4>
+                    <p id="s2lose" class="score minus">-0</p>
+                  </div>
+               </div> 
+            </div>
+
+         </div>
+
+      <div class="main">
+         <table id="table"> </table>
+      </div>
+
+      <div id="dright">
+         <div class="player" id="autumn">
+            <img src="/static/img/autumn.png" width=100px class="season-img" /><br>
+            <input type="player" id="p-autumn" placeholder="autumn" >
+               <!-- <label class="input-label">Player 1</label> -->
+            <h2 id="set3" class="score"></h2>
+               <div class="win-lose-container">
+                  <div>
+                    <h4>Win</h4>
+                    <p id="s3win" class="score plus">+0</p>
+                  </div>
+                  <div>
+                    <h4>Lose</h4>
+                    <p id="s3lose" class="score minus">-0</p>
+                  </div>
+               </div> 
+         </div>
+
+         <div class="player" id="winter">
+            <img src="/static/img/winter.png" width=100px class="season-img" /><br>
+            <input type="player" id="p-winter" placeholder="winter" >
+            <h2 id="set4" class="score"></h2>
+               <div class="win-lose-container">
+                  <div>
+                    <h4>Win</h4>
+                    <p id="s4win" class="score plus">+0</p>
+                  </div>
+                  <div>
+                    <h4>Lose</h4>
+                    <p id="s4lose" class="score minus">-0</p>
+                  </div>
+               </div> 
+         </div>
+         
+      </div>
+      
+      <div id="inputScoreBar">
+         <form id="score-form">     
+            <input type="score" id="is1" placeholder="spring" >
+            <input type="score" id="is2" placeholder="summer" >
+            <input type="score" id="is3" placeholder="autumn" >
+            <input type="score" id="is4" placeholder="winter" >
+            <button id="add-score" class="btn">Add Socre</button>
+         </form>      
+      </div>
+
+      <div id="reset">
+         <form id="reset-form" class="reset">                 
+            <button id="reset-players" class="reset">RESET PLAYER- & SCORE-DATA!</button>
+         </form>
+   
+         <form id="clear-form" class="reset">                    
+            <button id="clear-score" class="reset">CLEAR ALL SCORE RECORD!</button>
+         </form>
+      </div>   
+
+      
+   <footer>
+      <img src="/static/img/MMDCT-LOGO-W.png" class="footer-logo" alt="MMDCT" />
+      &copy; 2021, ฅ Mark&Mio Duo Creative Team ฅ<br>
+      ♡ MMDCT explores other entertainment possibilities in leisure time ♡
+      
+   </footer>
+
+   <script src="/static/script.js"></script>
+   </body>
+
+
+</html>
