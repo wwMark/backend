@@ -7,11 +7,34 @@ class Player(models.Model):
     def __str__(self):
         return (str(self.id) + ', ' + self.name_text)
 
-class Round(models.Model):
-    id = models.BigAutoField(primary_key=True)
+class RoundScore(models.Model):
+    id = models.IntegerField(primary_key=True)
+    is1 = models.IntegerField()
+    is2 = models.IntegerField()
+    is3 = models.IntegerField()
+    is4 = models.IntegerField()
 
-class Score(models.Model):
-    score = models.IntegerField()
-    round = models.ForeignKey(Round, on_delete=models.CASCADE)
-    owner = models.ForeignKey(Player, on_delete=models.CASCADE)
+class PlayerShuffle(models.Model):
+    id = models.IntegerField(primary_key=True)
+    name_text = models.CharField(max_length=100)
 
+    def __str__(self):
+        return (str(self.id) + ', ' + self.name_text)
+
+class RoundScoreShuffle(models.Model):
+    id = models.IntegerField(primary_key=True)
+    is1 = models.IntegerField()
+    is2 = models.IntegerField()
+    is3 = models.IntegerField()
+    is4 = models.IntegerField()
+
+# make two databases for shuffling access, in case when new values are not written to database after
+# old records are already deleted
+class DatabaseShuffle(models.Model):
+    shuffle = models.BooleanField(default=False)
+
+    def __str__(self):
+        return (str(self.shuffle))
+
+    def get_value(self):
+        return self.shuffle

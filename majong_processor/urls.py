@@ -17,8 +17,9 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('index/', views.handle_index, name='handle_index'),
-    path('name/', views.handle_name, name='handle_name'),
-    path('score/', views.handle_score, name='handle_score'),
-    path('reset-or-exit/', views.handle_reset_or_exit_game, name='handle_reset_or_exit_game'),
+    path('', views.handle_index, name='handle_index'),
+    path('json_traffic/', views.handle_json_traffic, name='handle_json_traffic'),
+    # path('name/', views.handle_name, name='handle_name'),
+    # path('score/', views.handle_score, name='handle_score'),
+    # path('reset-or-exit/', views.handle_reset_or_exit_game, name='handle_reset_or_exit_game'),
 ]

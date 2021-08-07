@@ -1,0 +1,461 @@
+*{margin:0px; padding:0px;}
+
+body{
+    text-align:center;
+    min-width:1000px;  
+    min-height: 1000vh;
+}
+
+header {
+    background-color: #7d9b8e; 
+    margin: 10px 10px 10px 10px; 
+    color: white;
+    text-align: top;
+    height: 200px;
+}
+
+#JMJ{
+    /* color: orange; */
+    height: 60px;
+    position:absolute;
+    top: 220px;
+    font-family: Wawati SC;
+    font-size: 20px;
+}
+
+#TIT{
+    /* color: orange; */
+    height: 60px;
+    position:absolute;
+    top: 10px;
+    left: 10px;
+    font-family: Wawati SC;
+    font-size: 35px;
+}
+
+footer {
+    background-color: #7d9b8e; 
+    color: #efe5d0; text-align: center; 
+    height: 35px;
+    width: 100%;
+    padding: 15px; 
+    margin: 0px 10px 10px 10px; 
+    font-size: 90%; 
+    position:fixed;
+    bottom:0px;
+}
+
+.head-logo {
+    width: 150px;
+}
+
+.head-img {
+    width: 150px;
+}
+.footer-logo{
+    float: right;
+    width: 50px;
+    margin: 0px 50px 10px 0px;
+}
+.season-img {
+    width: 85px;
+}
+
+h1{ line-height: 0.8em;}
+
+h2{
+    font-family: fantasy;
+    font-size: 12px;
+    font-weight: bolder;
+    line-height: 3em;
+}
+
+a{
+    color: #c3d6c8; 
+}
+
+#dleft{  
+    /* background-image: url(https://media.52poke.com/wiki/1/11/Bag_金色叶子_Sprite.png); */
+    /* background-image: url(img/LOGO-W-24x24.png); */
+    background-image: url(img/MMDCTLOGO.png);
+    background-repeat: repeat-x; 
+    background-size: 24px 24px;
+    background-position: center;
+    width:260px;
+    height:700px;
+    position: fixed; 
+    top: 115px; 
+    left: 50px;
+}
+
+#dright{
+    /* background-image: url(https://media.52poke.com/wiki/e/e7/Bag_银色叶子_Sprite.png); */
+    background-image: url(img/MMDCTLOGO.png);
+    background-repeat: repeat-x; 
+    background-size: 24px 24px;
+    background-position: center;
+    width:260px;
+    height:700px;
+    position: fixed; 
+    top: 115px; 
+    right: 50px;
+}
+
+.main{
+    align-items: center;
+    justify-content: center;
+    width:55%;
+    height: 50%;
+    position: absolute;
+    top: 470px;
+    left: 58%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.player{
+    width:200px;
+    height:340px;
+    margin:20px auto;
+}
+
+#maininfo{
+    position: fixed;
+    top: 20%; 
+    left: 30%;
+    background: #fff; 
+}
+#inputScoreBar { 
+    display: flex;     
+    position: fixed;
+    bottom: 10%; 
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#reset{
+    display: block; 
+    position: fixed;
+    bottom: 10%; 
+    left: 70%;
+}
+.win-lose-container {
+    box-shadow: var(--box-shadow);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+  }
+  
+.win-lose-container > div {
+    flex: 1;
+    text-align: center;
+}
+  
+.win-lose-container > div:first-of-type {
+    border-right: 1px solid #dedede;
+}
+
+.score {
+    font-size: 20px;
+    letter-spacing: 1px;
+    margin: 5px 0;
+}
+  
+.score.plus {
+    color: #257c49;
+}
+  
+.score.minus {
+    color: #7c3129;
+}
+
+/**************************************/
+/*********** Table Display ************/
+/**************************************/
+table {
+    margin-left: 20px; 
+    margin-right: 20px; 
+    border: thin solid rgb(155, 180, 163); 
+    caption-side: bottom; 
+    /* border-collapse: collapse; */
+}
+
+.cellcolor { 
+    background-color: #d5ebd5; 
+}
+
+tr, th{
+    width:100px;
+    height:33px;
+    text-align:center;
+    padding: 5px;
+    font-family: Helvetica;
+}
+
+th { 
+    background: #9eb391;
+    font-family: fantasy, Wawati SC;
+}
+th.round{
+    width:40px;
+}
+td.plus {
+    color: #257c49;
+}
+  
+td.minus {
+    color: #7c3129;
+}
+
+/* caption { font-style: italic; padding-top: 8px; } */
+
+/**************************************/
+/*********** list Display ************/
+/**************************************/
+.table {
+    width:450px;
+    margin:100px auto;
+}　
+
+.main {margin:100px 0 0 200px}　
+
+/**************************************/
+/********** Button Display ************/
+/**************************************/
+.btn {
+cursor: pointer;
+background-color: #465349;
+box-shadow: var(--box-shadow);
+color: #fff;
+border: 0;
+/* display: block; */
+font-size: 16px;
+padding: 10px;
+font-family: Wawati SC
+/* width: 50px; */
+}
+button.btn {
+    cursor: pointer;
+    background-color: #435547;
+    font-family: Wawati SC;
+    box-shadow: var(--box-shadow);
+    color: #fff;
+    font-size: 16px;
+    padding: 10px;
+    }
+
+.btn:focus,
+.delete-btn:focus {outline: 0;}
+
+ .delete-btn {
+    cursor: pointer;
+    background-color: #AD7C81;
+    border: 0;
+    color: #fff;
+    font-size: 10px;
+    line-height: 15px;
+    padding: 0px 5px 0px 5px;
+    margin: 2px 5px 5px 5px;
+    /* float: inline-start; */
+    opacity: 0;
+    transition: opacity 0.3s ease;             
+}
+
+.delete-btn.change {    
+    font-size: 10px;
+    border-radius: 25%;
+    border: 1px;
+    /* float:inline-end; */
+    /* margin-left: 30px; */
+}
+  .delete-btn:hover {
+    opacity: 1;
+  }
+
+  button.reset{
+    background-color: #939693; 
+    border: 3px 3px 3px 3px;
+    /* box-shadow: var(--box-shadow); */
+    color: whitesmoke;
+    font-size: 10px;
+    /* border: 0; */
+    margin: 2px;
+    height: 50px;
+    width: 70px; 
+  }
+
+button.confirm{
+    border-radius: 25%;
+    /* box-shadow: var(--box-shadow); */
+    font-family: Wawati SC, fantasy;
+    color: black;
+    font-size: 20px;
+    margin: 10px 0px 0px 0px;
+    padding: 10px 0px 0px 0px;
+    height: 30px;
+    width: 30px; 
+    background: url(img/LOGO-W-24x24.png);
+    background-size:15px 15px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #939693; 
+
+  }
+
+
+#sync button.confirm{
+    background-color: #939693; 
+    background-image: none;
+    /* border-style: outset; */
+    border: 3px 3px 3px 3px;
+    border-radius: 15%;
+    height: 55px;
+    width: 55px; 
+    position: fixed;
+    vertical-align:middle;
+    text-align: center;
+    line-height: 90%;
+    top: 40px;
+    right: 30px;
+}
+
+#desc{  
+    position: fixed;
+    top: 50px;
+    right: 100px;
+    background-color: #939693; 
+    background-image: none;
+    /* border-style: outset; */
+    border: 3px 3px 3px 3px;
+    border-radius: 15%;
+    max-height: 10px;
+    min-width: 40px; 
+    padding-bottom: 30px;
+    font-family: Wawati SC;
+    font-size: medium;
+    vertical-align:middle;  
+}
+/**************************************/
+/*********** Input Display ************/
+/**************************************/
+input[type='score']{
+    border: 1px solid #dedede;
+    border-radius: 2px;
+    font-size: 16px;
+    padding: 10px;
+    width: 10%;
+}
+
+input[type='player']{
+    font-size: 25px;
+    font-family: Wawati SC, fantasy;
+    color:rgb(4, 31, 18);
+    border-radius: 0.2em;
+    width: 60%;
+    text-align: center;
+}
+
+::-webkit-input-placeholder {
+    color: #7d9b8e;
+}
+
+  
+/**************************************/
+/********* More about Input ***********/
+/**************************************/
+.input-fill-x, .input-outline-x, .textarea-outline-x {
+    position: relative;
+    font-size: 25px;
+    font-family: Wawati SC, fantasy;
+    /* color:rgb(4, 31, 18); */
+    border-radius: 0.2em;
+    text-align: center;
+}
+.input-control:focus + label {
+    /* max-width: 120px;
+    height: 40px; */
+    overflow: hidden;
+    color: white;
+    background: #7d9b8e;
+    transform: scale(0.8) translate(0, -50px);
+}
+.input-label {
+    padding: 0 5px;
+    max-width: 120px;
+    height: 40px; 
+    overflow: hidden;
+    position: absolute;
+    right: 65px;
+    top: 8px; 
+    transform-origin: 0 0;
+    pointer-events: none;
+    transition: all .3s;
+    font-family: Wawati SC, fantasy;
+    text-align: center;
+    color: #7d9b8e;
+}
+
+
+/**************************************/
+/******** Try with Animation **********/
+/**************************************/
+.main1{
+    padding-top: 100px;width: 400px;display: inline-block;
+}
+.demo-cons{
+    width: 100px;
+    margin: 0 auto 60px;
+    position: relative;
+    animation: antion 3s infinite;
+    -webkit-animation: antion 4s infinite;
+}
+.demo-cons .sp1{
+    width: 130px;
+    height: 130px;
+    
+    background-image: url(img/Logo.png);
+    background-size: 130px 120px;
+    background-repeat: no-repeat;
+}
+
+.demo-cons .sp0{
+    width: 115px;
+    height: 20px;
+    margin-right: 100px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    margin-bottom: 10px;
+    animation: antionBg 4s infinite;
+    -webkit-animation: antionBg 4s infinite;
+}
+
+@keyframes antion {
+    0%{
+        margin-top: 50px;
+    }
+    50%{
+        margin-top: 10px;
+    }
+    100%{
+        margin-top: 50px;
+    }
+}
+@keyframes antionBg {
+    0%{
+        margin-top: 10px;
+        background-color: rgba(0, 0, 0, 0.3);
+        transform: scale(1.1);
+    }
+    50%{
+        margin-top: 50px;
+        background-color: rgba(0, 0, 0, 0.5);
+        transform: scale(1);
+    }
+    100%{
+        margin-top: 10px;
+        background-color: rgba(0, 0, 0, 0.3);
+        transform: scale(1.1);
+    }
+} 

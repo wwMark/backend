@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotAllowed
+from django.http import HttpResponse, HttpResponseNotAllowed, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.template import loader
 from majong_processor.models import *
@@ -11,70 +11,124 @@ from django.shortcuts import redirect
 # handle request related to get index page content
 def handle_index(request):
     if request.method == "GET":
-        index_template = loader.get_template('zhimajiang.html')
+        index_template = loader.get_template('jimajiang.html')
         return HttpResponse(index_template.render())
-        # return redirect("http://stackoverflow.com/")
     else:
         return HttpResponseNotAllowed(['GET'])
+
 @csrf_exempt
 # handle request related to add name page
-def handle_name(request):
+def handle_json_traffic(request):
     if request.method == "GET":
-        if Player.objects.all().exists():
-            first = Player.objects.filter(id=1)
-            second = Player.objects.filter(id=2)
-            third = Player.objects.filter(id=3)
-            fourth = Player.objects.filter(id=4)
-            return HttpResponse("Player names are " + first + ", " + second + ", " + third + ", " + fourth)
+        # first check shuffle, then check if player database is empty, if empty, go to else;
+        # if not empty, construct json and send it back via http response
+
+        shuffle = DatabaseShuffle.objects.filter(id=0).first().get_value()
+        shuffle = not shuffle
+        if shuffle:
+            if PlayerShuffle.objects.all().exists():
+                print("in 1.1")
+                players = list(PlayerShuffle.objects.values_list('name_text'))
+                all_score = list(RoundScoreShuffle.objects.values())
+                json_response = {'allScore': all_score, 'Players': players}
+                print(json_response)
+                response = JsonResponse(json_response)
+                response["Access-Control-Allow-Origin"] = "*"
+                response["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+                response["Access-Control-Max-Age"] = "1000"
+                response["Access-Control-Allow-Headers"] = "X-Requested-With, Content-Type"
+                return response
+            else:
+                print("in 1.2")
+                response = HttpResponse("There is no player in this game.")
+                response["Access-Control-Allow-Origin"] = "*"
+                response["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+                response["Access-Control-Max-Age"] = "1000"
+                response["Access-Control-Allow-Headers"] = "X-Requested-With, Content-Type"
+                return response
         else:
-            return HttpResponse("OK")
+            if Player.objects.all().exists():
+                print("in 2.1")
+                players = list(Player.objects.values_list('name_text'))
+                all_score = list(RoundScore.objects.values())
+                json_response = {'allScore': all_score, 'Players': players}
+                print(json_response)
+                response = JsonResponse(json_response)
+                response["Access-Control-Allow-Origin"] = "*"
+                response["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+                response["Access-Control-Max-Age"] = "1000"
+                response["Access-Control-Allow-Headers"] = "X-Requested-With, Content-Type"
+                return response
+            else:
+                print("in 2.2")
+                response = HttpResponse("There is no player in this game.")
+                response["Access-Control-Allow-Origin"] = "*"
+                response["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+                response["Access-Control-Max-Age"] = "1000"
+                response["Access-Control-Allow-Headers"] = "X-Requested-With, Content-Type"
+                return response
     elif request.method == "POST":
-        '''
-        json_data = json.loads(request.body)
-        first = Player(name_text=json_data['first'], id=1)
-        second = Player(name_text=json_data['second'], id=2)
-        third = Player(name_text=json_data['third'], id=3)
-        fourth = Player(name_text=json_data['fourth'], id=4)
-        first.save()
-        second.save()
-        third.save()
-        fourth.save()
-        print('Showing database name table items:')
-        print(Player.objects.all())
-        return HttpResponse("Server has received players' names.")
-        '''
-        print(request.body)
-        player = json.loads(str(request.body, 'utf-8'))
-        # player = json.loads(request.body.decode('utf-8'))
-        # print(player['player'])
+        # after recieving a request, first check shuffle to determine which database should be overwritten,
+        # then clear that database and write data, after that, execute shuffle
+
+        # prepare values to be written to database
+        body = json.loads(request.body)
+        all_score_list = list(body['allScore'])
+        player_list = list(body['Players'])
+
+        shuffle = DatabaseShuffle.objects.filter(id=0).first().get_value()
+        if shuffle:
+            PlayerShuffle.objects.all().delete()
+            RoundScoreShuffle.objects.all().delete()
+            for index, name in enumerate(player_list):
+                player = PlayerShuffle(name_text=name, id=index)
+                player.save()
+            for score in all_score_list:
+                round_score = RoundScoreShuffle(id=score['id'], is1=score['is1'], is2=score['is2'],
+                                                is3=score['is3'], is4=score['is4'])
+                round_score.save()
+            print('Post request updated shuffle database successfully.')
+            new_shuffle = not shuffle
+            DatabaseShuffle.objects.filter(id=0).update(shuffle=new_shuffle)
+            print('        Players names are:')
+            print(PlayerShuffle.objects.all())
+            print('        Round scores are:')
+            print(RoundScoreShuffle.objects.all())
+        else:
+            Player.objects.all().delete()
+            RoundScore.objects.all().delete()
+            for index, name in enumerate(player_list):
+                player = Player(name_text=name, id=index)
+                player.save()
+            for score in all_score_list:
+                round_score = RoundScore(id=score['id'], is1=score['is1'], is2=score['is2'],
+                                                is3=score['is3'], is4=score['is4'])
+                round_score.save()
+            print('Post request updated database successfully.')
+            new_shuffle = not shuffle
+            DatabaseShuffle.objects.filter(id=0).update(shuffle=new_shuffle)
+            print('        Players names are:')
+            print(Player.objects.all())
+            print('        Round scores are:')
+            print(RoundScore.objects.all())
+
         response = HttpResponse("Server got it!")
         response["Access-Control-Allow-Origin"] = "*"
         response["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
         response["Access-Control-Max-Age"] = "1000"
         response["Access-Control-Allow-Headers"] = "X-Requested-With, Content-Type"
-        print(response)
         return response
-    elif request.method == "PUT":
-        json_data = json.loads(request.body)
-        first = json_data['first']
-        second = json_data['second']
-        third = json_data['third']
-        fourth = json_data['fourth']
-        Player.objects.filter(id=1).update(name_text=first)
-        Player.objects.filter(id=2).update(name_text=second)
-        Player.objects.filter(id=3).update(name_text=third)
-        Player.objects.filter(id=4).update(name_text=fourth)
-        print('Showing database name table items:')
-        print(Player.objects.all())
-        return HttpResponse("Server has changed players' names.")
-    elif request.method == "DELETE":
-        print('Number of deleted names: ' + str(Player.objects.all().delete()))
-        print('Showing database name table items, empty if items are deleted correctly:')
-        print(Player.objects.all())
-        return HttpResponse("Server has deleted all names.")
 
-@csrf_exempt
+    elif request.method == "DELETE":
+        Player.objects.all().delete()
+        PlayerShuffle.objects.all().delete()
+        RoundScore.objects.all().delete()
+        RoundScoreShuffle.objects.all().delete()
+        return HttpResponse("Server has deleted all names and scores.")
+
+# @csrf_exempt
 # handle request related to add score page
+'''
 def handle_score(request):
     if request.method == "POST":
         json_data = json.loads(request.body)
@@ -100,9 +154,11 @@ def handle_score(request):
     elif request.method == "DELETE":
 
         return HttpResponse("Handling SCORE DELETE")
-
-@csrf_exempt
+'''
+# @csrf_exempt
 # handle request related to reset or exit game
+'''
 def handle_reset_or_exit_game(request):
     # TODO: delete all related database tables
     return HttpResponse("Handling reset or exit game")
+'''

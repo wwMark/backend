@@ -1,8 +1,10 @@
 import qrcode
 from MyQR import myqr
 from PIL import Image,ImageDraw,ImageFont
+from pathlib import Path
+import os
 
-def QR_With_Central_Img(link="https://github.com/MM-DCT/JiMaJiang", central_picture="img/LOGO_green.jpg", outputput_file="qrcode_with_border.png", outputput_file_="qrcode_without_border.png"):
+def QR_With_Central_Img(link="https://github.com/MM-DCT/JiMaJiang", central_picture="img\\LOGO_green.jpg", outputput_file="qrcode_with_border.png", outputput_file_="qrcode_without_border.png"):
     #link: url
     #central_picture: central picture filename
     #outputput_file: output filename
@@ -20,6 +22,12 @@ def QR_With_Central_Img(link="https://github.com/MM-DCT/JiMaJiang", central_pict
     qr.make(fit=True)
     img = qr.make_image(fill_color=bordercolor)
     img = img.convert("RGBA")
+
+    # debug
+    BASE_DIR = Path(__file__).resolve().parent
+    print(BASE_DIR)
+    central_picture = os.path.join(BASE_DIR, central_picture)
+    print(central_picture)
     icon = Image.open(central_picture)
 
     img_w, img_h = img.size
@@ -44,8 +52,17 @@ def QR_With_Central_Img(link="https://github.com/MM-DCT/JiMaJiang", central_pict
     img_new.paste(img, (width, width))
 
     draw = ImageDraw.Draw(img_new)
-    font = ImageFont.truetype(font='menmiao.ttf', size=20, encoding="utf-8")
+
+    # debug
+    font_path = os.path.join(BASE_DIR, "menmiao.ttf")
+    font = ImageFont.truetype(font=font_path, size=20, encoding="utf-8")
     draw.text((100,10),btext,font=font,direction=None)
+
+    # debug
+    outputput_file_ = os.path.join(BASE_DIR, outputput_file_)
+    outputput_file = os.path.join(BASE_DIR, outputput_file)
+    print(outputput_file_)
+    print(outputput_file)
     img.save(outputput_file_)
     img_new.save(outputput_file)
 

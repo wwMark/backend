@@ -33,7 +33,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'majong_processor.apps.MajongProcessorConfig',
-    'django.contrib.admin',
+        'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -58,8 +58,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            'C:/Users/Mark',
-            # os.path.join(BASE_DIR, 'majong_processor/templates/zhimajiang'),
+            # 'C:/Users/Mark',
+            os.path.join(BASE_DIR, 'majong_processor/templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -124,10 +124,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'majong_processor/templates/zhimajiang'),
+    os.path.join(BASE_DIR, 'majong_processor/templates'),
 ]
 
-STATIC_ROOT = 'C:\\Users\\Mark\\iCloudDrive\\zaizai\\majong\\majong_processor\\static'
+STATIC_ROOT = os.path.join(BASE_DIR, 'majong_processor\\statics\\jimajiang')
+   # 'C:\\Users\\Mark\\iCloudDrive\\zaizai\\majong\\majong_processor\\static'
 
 STATIC_URL = '/static/'
 
