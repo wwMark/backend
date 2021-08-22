@@ -15,6 +15,7 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR_STR = str(BASE_DIR)
 
 
 # Quick-start development settings - unsuitable for production
@@ -59,7 +60,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             # 'C:/Users/Mark',
-            os.path.join(BASE_DIR, 'majong_processor/templates'),
+            os.sep.join([BASE_DIR_STR, 'majong_processor', 'templates']),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -124,10 +125,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'majong_processor/templates'),
+    # use / as separator even on windows
+    os.path.join(BASE_DIR_STR, 'majong_processor', 'templates'),
 ]
+print("test", os.path.join(BASE_DIR_STR, 'majong_processor', 'templates'))
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'majong_processor\\statics\\jimajiang')
+STATIC_ROOT = os.sep.join([BASE_DIR_STR, 'majong_processor', 'static', 'jimajiang'])
    # 'C:\\Users\\Mark\\iCloudDrive\\zaizai\\majong\\majong_processor\\static'
 
 STATIC_URL = '/static/'

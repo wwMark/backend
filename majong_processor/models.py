@@ -14,6 +14,9 @@ class RoundScore(models.Model):
     is3 = models.IntegerField()
     is4 = models.IntegerField()
 
+    def __str__(self):
+        return (str(self.is1) + ', ' + str(self.is2) + ', ' + str(self.is3) + ', ' + str(self.is4))
+
 class PlayerShuffle(models.Model):
     id = models.IntegerField(primary_key=True)
     name_text = models.CharField(max_length=100)
@@ -27,6 +30,9 @@ class RoundScoreShuffle(models.Model):
     is2 = models.IntegerField()
     is3 = models.IntegerField()
     is4 = models.IntegerField()
+
+    def __str__(self):
+        return (str(self.is1) + ', ' + str(self.is2) + ', ' + str(self.is3) + ', ' + str(self.is4))
 
 # make two databases for shuffling access, in case when new values are not written to database after
 # old records are already deleted

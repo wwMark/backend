@@ -75,7 +75,7 @@ def handle_json_traffic(request):
         body = json.loads(request.body)
         all_score_list = list(body['allScore'])
         player_list = list(body['Players'])
-
+        print("server received request")
         shuffle = DatabaseShuffle.objects.filter(id=0).first().get_value()
         if shuffle:
             PlayerShuffle.objects.all().delete()

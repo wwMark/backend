@@ -4,7 +4,10 @@ from PIL import Image,ImageDraw,ImageFont
 from pathlib import Path
 import os
 
-def QR_With_Central_Img(link="https://github.com/MM-DCT/JiMaJiang", central_picture="img\\LOGO_green.jpg", outputput_file="qrcode_with_border.png", outputput_file_="qrcode_without_border.png"):
+central_picture = os.sep.join(["img", "LOGO_green.jpg"])
+
+# def QR_With_Central_Img(link="https://github.com/MM-DCT/JiMaJiang", central_picture="img\\LOGO_green.jpg", outputput_file="qrcode_with_border.png", outputput_file_="qrcode_without_border.png"):
+def QR_With_Central_Img(link="https://github.com/MM-DCT/JiMaJiang", central_picture=central_picture, outputput_file="qrcode_with_border.png", outputput_file_="qrcode_without_border.png"):
     #link: url
     #central_picture: central picture filename
     #outputput_file: output filename

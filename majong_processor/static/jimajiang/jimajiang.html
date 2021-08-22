@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="cn">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <link rel="stylesheet" href="/static/style.css" />
+      <title>芝麻酱</title>
+   </head>
+   <body>
+      <header>
+         <span id="TIT">记麻将!</span>
+         <div class="demo-cons">
+            <div class="sp1"></div>
+            <div class="sp0"></div>
+            
+        </div><span id="JMJ">记麻将!</span>
+        
+         <!-- <img src="img/Logo.png" class="head-logo" alt="MMCD logo image for SesameButter" /> -->
+         
+         <button class="btn" id="desc">?</button>
+         <!-- <input type="button" id="desc"  value="?" /> -->
+
+         <form id="sync" class="reset">                    
+            <button class="confirm">同步分数</button>
+         </form>            
+      </header>
+
+      <div id="dleft"　class="sidebar">
+            <div class="player" id="spring">
+               <img src="/static/img/dong.png" width=100px class="season-img" /><br>
+               <form id="playerd" class="reset">                    
+                  <div class="input-outline-x">
+                     <input class="input-control input-outline" type="player" id="p-spring">
+                     <label class="input-label" id="dong">東方</label>
+                     <button class="confirm" ></button>
+                  </div>
+               </form>
+               <h2 id="set1" class="score"></h2>
+               <div class="win-lose-container">
+                  <div>
+                    <h4>Win</h4>
+                    <p id="s1win" class="score plus">+0</p>
+                  </div>
+                  <div>
+                    <h4>Lose</h4>
+                    <p id="s1lose" class="score minus">-0</p>
+                  </div>
+               </div> 
+            </div>
+
+            <div class="player" id="summer">
+               <img src="/static/img/nan.png" width=100px class="season-img" /><br>
+               <form id="playern" class="reset">                    
+                  <div class="input-outline-x">
+                     <input class="input-control input-outline" type="player" id="p-summer">
+                     <label id="nan" class="input-label">南宮</label>
+                     <button class="confirm"></button>
+                  </div>
+               </form>
+               <h2 id="set2" class="score"></h2>
+               <div class="win-lose-container">
+                  <div>
+                    <h4>Win</h4>
+                    <p id="s2win" class="score plus">+0</p>
+                  </div>
+                  <div>
+                    <h4>Lose</h4>
+                    <p id="s2lose" class="score minus">-0</p>
+                  </div>
+               </div> 
+            </div>
+
+         </div>
+
+      <div class="main">
+         <div id="changediv"><form id="changef"> </form></div>
+         <table id="table"> </table>
+      </div>
+
+      <div id="dright">
+         <div class="player" id="autumn">
+            <img src="/static/img/xi.png" width=100px class="season-img" /><br>
+            <form id="playerx" class="reset">                    
+               <div class="input-outline-x">
+                  <input class="input-control input-outline" type="player" id="p-autumn">
+                  <label class="input-label" id="xi">西門</label>
+                  <button class="confirm"></button>
+               </div>
+            </form>
+            
+            <h2 id="set3" class="score"></h2>
+               <div class="win-lose-container">
+                  <div>
+                    <h4>Win</h4>
+                    <p id="s3win" class="score plus">+0</p>
+                  </div>
+                  <div>
+                    <h4>Lose</h4>
+                    <p id="s3lose" class="score minus">-0</p>
+                  </div>
+               </div> 
+         </div>
+
+         <div class="player" id="winter">
+            <img src="/static/img/bei.png" width=100px class="season-img" /><br>
+            <form id="playerb" class="reset">                    
+               <div class="input-outline-x">
+                  <input class="input-control input-outline" type="player" id="p-winter">
+                  <label id="bei" class="input-label">北野</label>
+                  <button class="confirm"></button>
+               </div>
+            </form>
+            <h2 id="set4" class="score"></h2>
+               <div class="win-lose-container">
+                  <div>
+                    <h4>Win</h4>
+                    <p id="s4win" class="score plus">+0</p>
+                  </div>
+                  <div>
+                    <h4>Lose</h4>
+                    <p id="s4lose" class="score minus">-0</p>
+                  </div>
+               </div> 
+         </div>
+         
+      </div>
+      
+      <div id="inputScoreBar">
+         <form id="score-form">     
+            <input type="score" id="is1" placeholder="東" >
+            <input type="score" id="is2" placeholder="南" >
+            <input type="score" id="is3" placeholder="西" >
+            <input type="score" id="is4" placeholder="北" >
+            <button id="add-score" class="btn">Add Socre</button>
+         </form>      
+      </div>
+
+      <div id="reset">
+         <form id="reset-form" class="reset">                 
+            <button id="reset-players" class="reset">RESET PLAYER- & SCORE-DATA!</button>
+         </form>
+   
+         <form id="clear-form" class="reset">                    
+            <button id="clear-score" class="reset">CLEAR ALL SCORE RECORD!</button>
+         </form>
+      </div>   
+
+      
+   <footer>
+      <a href="mailto:linxiaomiao@live.cn?
+		subject=关于芝麻酱我有话要说！&body=有些关于芝麻酱？计麻将！的话，我不吐不快！">
+		<p><img src="/static/img/MMDCT-LOGO-W.png" class="footer-logo" alt="MMDCT" /></p></a>
+      
+      &copy; 2021, ฅ <a href="https://github.com/MM-DCT">Mark&Mio Duo Creative Team</a> ฅ<br>
+      ♡ MMDCT explores other entertainment possibilities in leisure time ♡
+      
+   </footer>
+
+   <script src="/static/script.js"></script>
+   </body>
+
+
+</html>
